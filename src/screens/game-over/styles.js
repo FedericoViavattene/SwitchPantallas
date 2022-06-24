@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
     },
     resultContainer: {
         marginBottom: 30,
@@ -15,8 +16,19 @@ export const styles = StyleSheet.create({
         maxWidth: "80%",
         alignItems: "center",
     },
-    Image : {
+    image : {
         width: "80%",
         height: height * 0.3,
+    },
+    containerLandscape: {
+        flex: 1,
+        flexDirection: "row",
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    imageLandscape:{
+        width: "20%",
+        height: height * 0.2,
     }
 })
