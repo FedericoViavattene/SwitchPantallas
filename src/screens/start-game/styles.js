@@ -7,49 +7,45 @@ export const styles = StyleSheet.create({
     containerTouchable :{
         flex: 1,
         alignItems: "center",
-        marginVertical: 10,
-        backgroundColor: "#ffffff"
+        marginVertical: 10
     },
     container: {
         flex: 1,
         alignItems: "center",
 
     },
-    containerScroll : {
-        flex: 1
-    },
     title:{
         fontSize: 20,
-        marginVertical: 10,
-        padding: 20,
+        marginVertical: 10
 
     },
     inputContainer:{
-        width: "80%",
-        minWidth: 300,
+        width: 300,
+        maxWidth: '80%',
         padding: 20,
         alignItems: "center",
-        maxWidth: '90%',
+        minWidth: 300,
     },
     buttonContainer:{
         flexDirection: 'row',
         width: '100%',
         justifyContent:  'space-between',
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
+        marginTop: height > 600 ? 20 : 10,
         
     },
     button: {
-        width: width/ 3.2,
+        width: width / 4,
     },
-
     summaryContainer: {
-        width: width / 1.2,
         marginVertical: height > 600 ? 30 : 20,
         alignItems: "center",
-        paddingVertical: height > 600 ? 30 : 20
+        width: width / 3,
+        paddingVertical: height > 600 ? 30  : 20,
+        
     },
-    subtitle: {
+    subtitle:{
         fontSize: 16,
     }
 
-});
+})

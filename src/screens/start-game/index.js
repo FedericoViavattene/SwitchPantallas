@@ -1,12 +1,9 @@
 import {
      Button,
      Keyboard,
-     KeyboardAvoidingView,
-     Platform,
-     ScrollView,
      Text,
      TouchableWithoutFeedback,
-     View,
+     View
 } from "react-native";
 import { Card, Input, NumberContainer } from "../../components/index";
 import React, {useState} from "react";
@@ -19,7 +16,6 @@ const StartGame = ({onStartGame}) =>{
     const [enteredValue, setEnteredValue ] = useState("");
     const [confirmed, setConfirmed ] = useState("");
     const [selectedNumber, setSelectedNumber ] = useState(false);
-    const isIOS = Platform.OS ===  "ios";
 
     const handlerInputNumber = (text) => {
         setEnteredValue(text.replace(/[^0-9]/g, ""))
@@ -27,53 +23,51 @@ const StartGame = ({onStartGame}) =>{
 
     const handlerClearInput = () =>{
         setEnteredValue("");
-    }
+        setConfirmed(false);
+    };
 
     const handlerConfirmInput = () => {
 
-        const chooseNumber = parseInt (enteredValue)
-        if ( isNaN ( chooseNumber )  || chooseNumber <= 0 || chooseNumber >99) return;
+        const choseNumber = parseInt (enteredValue);
+        if ( isNaN ( choseNumber )  || choseNumber <= 0 || choseNumber >99) return;
 
         setConfirmed (true)
-        setSelectedNumber(parseInt(enteredValue))
+        setSelectedNumber(choseNumber)
         setEnteredValue("")
-    };
+    } 
 
     let confirmedOutput;
-    if(confirmed){
-        confirmedOutput= (
-        <Card style={styles.summaryContainer}>
-            <Text style={styles.subtitle}> Tu seleccion</Text>
-            <NumberContainer> {selectedNumber} </NumberContainer>
-            <Button
-                title="Empezar Juego"
-                onPress={() => props.onStartGame (selectedNumber)}
-                color={Colors.secondary}/>
-        </Card>
-     );
-    };
+        if (confirmed){
+            confirmedOutput = (
+                <Card style={styles.summaryContainer}>
+                    <Text style={styles.subtitle}>Tu seleccion</Text>
+                    <NumberContainer> {selectedNumber} </NumberContainer>
+                    <Button 
+                        title="Empezar Juego" 
+                        onPress={() => onStartGame(selectedNumber)}>
+                        color = {Colors.secondary}
+                    </Button>
+                </Card>
+            );
+        }
     
 
 return (
-    <KeyboardAvoidingView
-        style ={styles.container}
-        behavior = {isIOS ? "position" : "height"}
-        keyboardVerticalOffset = {30}>
-       
-
     <TouchableWithoutFeedback
-      style ={styles.containerTouchable}
-      onPress ={() => {
+     style ={styles.containerTouchable}
+     onPress ={() => {
         Keyboard.dismiss();
 
      }}
      >
-    <ScrollView style = {styles.containerScroll}>
-        <Text style= {styles.title}>Empezar Juego</Text>
+    <View style = {styles.container}>
+        <Text style= {styles.title}>
+                Comencemos
+        </Text>
         <Card style = {styles.inputContainer}>
-            <Text> Seleccione un numero</Text>
+            <Text> Selecciona el numero</Text>
             <Input 
-                placeholder="Ingresa un numero" 
+                placeholder="Ingresa un numero loco" 
                 keyboardType="numeric"
                 autoCapitalize ="none"
                 autoCorrect = {false}
@@ -91,18 +85,16 @@ return (
                         />
                     </View>
                     <View style={styles.button} >
-                        <Button 
-                        title ="Confirmar" 
-                        onPress ={ () => handlerConfirmInput} 
+                        <Button title ="Confirmar" 
+                        onPress ={ () => handlerConfirmInput ()} 
                         color={Colors.secondary}
                         />
                     </View>
                 </View>  
             </Card>
             {confirmedOutput}
-        </ScrollView>
+        </View>
      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
 
     );
 };
