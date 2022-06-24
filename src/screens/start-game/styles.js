@@ -14,6 +14,10 @@ export const styles = StyleSheet.create({
         alignItems: "center",
 
     },
+    containerScroll: {
+        flex: 1,
+
+    },
     title:{
         fontSize: 20,
         marginVertical: 10
@@ -35,7 +39,8 @@ export const styles = StyleSheet.create({
         
     },
     button: {
-        width: width / 4,
+        width: width / 7,
+        alignItems: "center"
     },
     summaryContainer: {
         marginVertical: height > 600 ? 30 : 20,

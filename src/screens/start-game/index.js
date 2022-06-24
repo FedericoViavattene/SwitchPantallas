@@ -1,6 +1,8 @@
 import {
      Button,
      Keyboard,
+     KeyboardAvoidingView,
+     ScrollView,
      Text,
      TouchableWithoutFeedback,
      View
@@ -53,6 +55,12 @@ const StartGame = ({onStartGame}) =>{
     
 
 return (
+    <KeyboardAvoidingView 
+    style ={styles.container}
+    behavior="position" 
+    keyboardVerticalOffset={30}
+    >
+    
     <TouchableWithoutFeedback
      style ={styles.containerTouchable}
      onPress ={() => {
@@ -60,7 +68,7 @@ return (
 
      }}
      >
-    <View style = {styles.container}>
+    <ScrollView style = {styles.containerScroll}>
         <Text style= {styles.title}>
                 Comencemos
         </Text>
@@ -93,8 +101,9 @@ return (
                 </View>  
             </Card>
             {confirmedOutput}
-        </View>
+        </ScrollView>
      </TouchableWithoutFeedback>
+     </KeyboardAvoidingView>
 
     );
 };
