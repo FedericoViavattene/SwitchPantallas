@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
         
     },
     button: {
-        width: width / 7,
+        width: width / 4,
         alignItems: "center"
     },
     summaryContainer: {
